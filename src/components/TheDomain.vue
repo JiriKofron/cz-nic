@@ -1,10 +1,15 @@
 <template>
   <section class="domain__details">
     <h2>{{ domainDetail.fqdn }}</h2>
-    <button v-on:click="verboseButton()" class="domain__details__button">
-      <i class="fas fa-toggle-on icon"></i
-      ><span class="domain__details__button__text">Verbose view</span>
-    </button>
+    <div class="domain__details__verboseBtn">
+      <input
+        type="checkbox"
+        v-on:click="verboseButton()"
+        v-bind:checked="verboseView"
+        class="domain__details__button"
+      />
+      <span class="domain__details__button__text">Verbose view</span>
+    </div>
     <section class="domain__details__container">
       <section class="domain__details__left">
         <article class="domain__details__left__articles">
@@ -220,14 +225,9 @@ export default {
   name: 'TheDomain',
   components: { StateFlag, TheAdministrativeContact },
   data() {
-    return {
-      toggleOn: false,
-    };
+    return {};
   },
   methods: {
-    toggle: function() {
-      this.toggleOn = !this.toggleOn;
-    },
     formatDate: (date) => {
       let formatedDate = moment
         .tz(date, 'Europe/Prague')
@@ -276,7 +276,7 @@ export default {
     }
   }
 
-  &__button {
+  &__verboseButton {
     display: flex;
     align-items: center;
     background: transparent;
