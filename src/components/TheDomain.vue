@@ -249,11 +249,6 @@ export default {
   computed: {
     ...mapState(['domainDetail', 'verboseView']),
   },
-  // watch: {
-  //   verboseView() {
-  //     return this.verboseView;
-  //   },
-  // },
 };
 </script>
 
