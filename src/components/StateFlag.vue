@@ -9,7 +9,7 @@
           <ul>
             <div v-for="item in domainDetail.state_flags.flags" :key="item.id">
               <li class="state-flags__column__list" v-if="item.active">
-                <span class="active state-flags__column__list__description"
+                <span class="active list__description"
                   ><i class="fas fa-check-circle"></i>
                   <p>{{ item.description }}</p></span
                 >
@@ -27,7 +27,7 @@
               v-bind:key="item.id"
             >
               <span
-                class="state-flags__column__list__description"
+                class="list__description"
                 v-bind:class="{ active: item.active }"
                 ><i v-if="item.active === true" class="fas fa-check-circle"></i
                 ><i v-else class="fas fa-times-circle"></i>
@@ -44,7 +44,7 @@
               v-bind:key="item.id"
             >
               <span
-                class="state-flags__column__list__description"
+                class="list__description"
                 v-bind:class="{ active: item.active }"
                 ><i v-if="item.active" class="fas fa-check-circle"></i
                 ><i v-else class="fas fa-times-circle"></i>
@@ -76,7 +76,7 @@ export default {
     ...mapState(['domainDetail', 'verboseView']),
   },
   methods: {
-    findTasks: function(groupArray) {
+    findTasks(groupArray) {
       const taskGroup = [];
       const tasksArray = this.domainDetail.state_flags.flags;
       groupArray.forEach((element) => {
@@ -117,22 +117,22 @@ tbody {
       font-size: 0.8rem;
       padding: 3px 0;
 
-      &__description {
-        display: flex;
-        align-items: flex-start;
-
-        p {
-          padding-left: 0.2rem;
-          margin: 0;
-          margin-left: 0.4rem;
-          padding: 0;
-        }
-      }
-
       .active {
         color: green;
       }
       color: red;
+    }
+  }
+
+  .list__description {
+    display: flex;
+    align-items: flex-start;
+
+    p {
+      padding-left: 0.2rem;
+      margin: 0;
+      margin-left: 0.4rem;
+      padding: 0;
     }
   }
 }

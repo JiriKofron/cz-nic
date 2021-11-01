@@ -21,12 +21,12 @@
                   <span
                     class="domain__details__tables__password"
                     v-if="showPassword"
-                    >{{ password }}</span
+                    >{{ this.password }}</span
                   ><button
                     class="domain__details__tables__button uppercase"
-                    v-on:click="passwordButton"
+                    v-on:click="showPasswordBtn"
                   >
-                    Show
+                    {{ showButtonText }}
                   </button>
                 </td>
               </tr>
@@ -223,41 +223,41 @@ import moment from 'moment-timezone';
 
 export default {
   name: 'TheDomain',
-  components: { StateFlag, TheAdministrativeContact },
   data() {
-    return {};
+    return {
+      showPassword: false,
+      showButtonText: 'show',
+      password: 'secret password',
+    };
   },
+  components: { StateFlag, TheAdministrativeContact },
   methods: {
     formatDate: (date) => {
-      let formatedDate = moment
+      return moment
         .tz(date, 'Europe/Prague')
         .utc()
         .format('MMM D, YYYY hh:mm:ss A');
-      return formatedDate;
     },
-    verboseButton: function() {
+    verboseButton() {
       this.$store.commit('changeVerbose');
     },
-    passwordButton: function() {
-      this.$store.commit('showPassword');
+    showPasswordBtn() {
+      this.showPassword = !this.showPassword;
+      this.showButtonText = this.showPassword ? 'hide' : 'show';
     },
   },
   computed: {
-    ...mapState(['domainDetail', 'showPassword', 'password', 'verboseView']),
+    ...mapState(['domainDetail', 'verboseView']),
   },
-  watch: {
-    verboseView() {
-      return this.verboseView;
-    },
-  },
+  // watch: {
+  //   verboseView() {
+  //     return this.verboseView;
+  //   },
+  // },
 };
 </script>
 
 <style lang="scss">
-// * {
-//  border: 1px solid red;
-// }
-
 .domain__details {
   width: 100%;
 

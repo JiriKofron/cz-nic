@@ -64,16 +64,8 @@
 import { mapState } from 'vuex';
 export default {
   name: 'TheAdministrativeContact',
-  data() {
-    return {};
-  },
   computed: {
     ...mapState(['domainDetail', 'verboseView']),
-  },
-  watch: {
-    verboseView() {
-      return this.verboseView;
-    },
   },
 };
 </script>

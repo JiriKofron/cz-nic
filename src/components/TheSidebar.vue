@@ -11,9 +11,6 @@
 <script>
 export default {
   name: 'TheSidebar',
-  data() {
-    return {};
-  },
 };
 </script>
 
