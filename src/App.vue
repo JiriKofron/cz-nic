@@ -94,6 +94,10 @@ main {
 
 .sidebar {
   width: 20%;
+
+  @media screen and (max-width: $mobile) {
+    width: 100%;
+  }
 }
 
 .domain {
@@ -101,6 +105,14 @@ main {
   background: rgba($gray, 0.2);
   padding: 0 3rem;
   height: 100vh;
+
+  @media screen and (max-width: $mobile) {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
 }
 .user {
   color: white;
